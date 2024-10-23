@@ -1,0 +1,7 @@
+[
+  { "idCategoria": 1, "nombreCategoria": "Cocina" },
+  { "idCategoria": 2, "nombreCategoria": "Pastelería" },
+  { "idCategoria": 3, "nombreCategoria": "Decoración" },
+  { "idCategoria": 4, "nombreCategoria": "Electrodomesticos" },
+  { "idCategoria": 5, "nombreCategoria": "Indumentaria" }
+]
