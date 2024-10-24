@@ -69,6 +69,7 @@ const NavbarWithMenu = () => {
                 key={cat.idCategoria}
                 to={`/products/${slug}`}
                 onClick={toggleMenu}
+                className="leading-[2.5] flex flex-col justify-start"
               >
                 {cat.nombreCategoria}
               </Link>

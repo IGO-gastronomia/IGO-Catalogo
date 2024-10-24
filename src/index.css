@@ -71,3 +71,7 @@
   font-weight: 800; /* Peso para Extrabold */
   font-style: normal;
 }
+
+.bg-imagen {
+  @apply bg-[url('https://drive.google.com/uc?export=view&id=12s4n5Ja029TndsPJjMWunCJx6327sJK5')] bg-cover bg-center bg-no-repeat;
+}
