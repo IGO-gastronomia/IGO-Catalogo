@@ -17,7 +17,7 @@ export default function Home() {
   };
 
   return (
-    <div className="  flex flex-col justify-start items-center bg-gray-500 ">
+    <div className="pt-20 md:pt-24 flex flex-col justify-start items-center bg-gray-500 ">
       <CarouselCustomNavigation />
 
       <Card className=" h-[200px] mb-20 mt-10 md:mb-14 w-[90%] items-center justify-center overflow-hidden text-center rounded-lg shadow-lg">
@@ -30,7 +30,7 @@ export default function Home() {
               Conocé nuestro bazar
             </Typography>
 
-            <Link to={"https://www.google.com"}>
+            <Link to={"/products/"}>
               <div className="flex items-center justify-center w-32  mt-2 px-4 py-2 bg-gray-700 bg-opacity-60 hover:bg-gray-800 text-white rounded-full shadow-lg gap-3 transition-transform duration-300 hover:scale-105">
                 <Typography className="text-md font-medium leading-[1.5] tracking-wide text-white">
                   Ver

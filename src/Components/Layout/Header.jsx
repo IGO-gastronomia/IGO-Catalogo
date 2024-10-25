@@ -75,6 +75,13 @@ const NavbarWithMenu = () => {
               </Link>
             );
           })}
+          <Link
+            to={`/products`}
+            onClick={toggleMenu}
+            className="leading-[2.5] flex flex-col justify-start"
+          >
+            Todos los productos
+          </Link>
         </div>
       </div>
     </>
