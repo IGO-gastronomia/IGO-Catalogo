@@ -40,8 +40,11 @@ export default function Products() {
 
   // Filtra los productos en función del término de búsqueda y paginación
   useEffect(() => {
-    const filteredProducts = productsByCateg.filter((prod) =>
-      prod.nombreProducto.toLowerCase().includes(searchQuery.toLowerCase())
+    const filteredProducts = productsByCateg.filter(
+      (prod) =>
+        prod.nombreProducto.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        prod.precio.toString().includes(searchQuery) ||
+        prod.descripcion.toLowerCase().includes(searchQuery.toLowerCase())
     );
     const startIndex = (activePage - 1) * productsPerPage;
     const endIndex = startIndex + productsPerPage;
