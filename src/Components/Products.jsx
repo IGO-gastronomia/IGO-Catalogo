@@ -45,7 +45,7 @@ export default function Products() {
   const handlePageChange = (page) => setActivePage(page);
 
   return (
-    <section className="pt-24 md:pt-26 flex min-h-screen flex-col  lg:pt-28 text-center px-3">
+    <section className="pt-24 md:pt-26 flex min-h-screen flex-col items-center justify-center lg:pt-28 text-center px-3">
       {categoria ? (
         <>
           <div className="h-32 w-full md:w-[95%] bg-black rounded-3xl flex justify-center items-center">
