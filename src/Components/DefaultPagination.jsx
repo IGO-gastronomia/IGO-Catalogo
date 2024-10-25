@@ -124,7 +124,7 @@ export function DefaultPagination({
 
   return (
     <div
-      className={`flex items-center gap-1 md:gap-4 my-10  ${
+      className={`flex items-center justify-center gap-1 md:gap-4 my-10  ${
         totalItems <= itemsPerPage ? "hidden" : "block"
       }`}
     >
