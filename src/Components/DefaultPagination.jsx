@@ -96,7 +96,7 @@ export function DefaultPagination({
       for (let i = startPage; i <= endPage; i++) {
         pageButtons.push(
           <IconButton
-            key={`page-${activePage}-desktop`}
+            key={`page-${i}-desktop`}
             variant={activePage === i ? "filled" : "text"}
             color="gray"
             onClick={() => onPageChange(i)}
