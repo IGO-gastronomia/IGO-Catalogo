@@ -35,6 +35,9 @@ export default function Product() {
               <p className="md:text-md lg:text-xl max-w-[80%]">
                 {producto.descripcion}
               </p>
+              <p className="md:text-md lg:text-xl max-w-[80%]">
+                Precio: ${producto.precio}
+              </p>
             </div>
             <div className="flex justify-center items-end">
               <Typography
