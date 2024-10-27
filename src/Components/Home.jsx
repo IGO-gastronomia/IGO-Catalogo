@@ -40,7 +40,7 @@ export default function Home() {
             <Link
               key={category.idCategoria}
               to={`/products/${slug}`}
-              className="flex flex-col justify-start relative bg-white w-full md:flex-grow md:basis-[300px] h-[250px] rounded-lg overflow-hidden shadow-lg bg-cover bg-center transform transition-transform duration-300 ease-in-out  border-0 border-transparent hover:scale-105  hover:border-[1.5px] hover:border-gray-500 hover:shadow-gray-800"
+              className="flex flex-col justify-start relative bg-white w-full md:flex-grow md:basis-[300px] h-[250px] rounded-lg overflow-hidden shadow-lg bg-cover bg-center transform transition-transform duration-300 ease-in-out  border-0 border-transparent hover:scale-105  hover:border-[1px] hover:border-white hover:shadow-gray-800"
               style={{ backgroundImage: `url(${category.img})` }}
             >
               <div className="absolute bottom-0 left-0 p-4 bg-black bg-opacity-55 text-white w-full rounded-b-lg">

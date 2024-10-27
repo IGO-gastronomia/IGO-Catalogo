@@ -78,7 +78,7 @@ export default function Products() {
                       backgroundSize: "cover",
                       backgroundPosition: "center",
                     }}
-                    className="relative h-48 w-40 md:h-72 md:w-64 bg-gray-300 rounded-3xl flex justify-center items-center transform transition-transform duration-300 ease-in-out  border-0 border-transparent hover:scale-105  hover:border-[1px] hover:border-gray-400 hover:shadow-2xl"
+                    className="relative h-48 w-40 md:h-72 md:w-64 bg-gray-300 rounded-3xl flex justify-center items-center transform transition-transform duration-300 ease-in-out  border-0 border-transparent hover:scale-105  hover:border-[1px] hover:border-white hover:shadow-2xl"
                   >
                     <div className="absolute bottom-0 left-0 p-3 min-h-20 flex flex-col justify-center bg-black bg-opacity-55 text-black w-full rounded-b-3xl">
                       <h1 className="text-sm md:text-[16px] text-start text-wrap md:text-center mb-3 font-semibold first-letter:uppercase lowercase">
