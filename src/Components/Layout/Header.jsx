@@ -50,7 +50,7 @@ const NavbarWithMenu = () => {
 
   return (
     <>
-      <Navbar className="mx-auto mt-2 lg:mt-5 w-[95%] min-h-14 max-w-screen-xl px-3 py-3 shadow-[0px_10px_30px_rgba(0,0,0,0.5)] bg-gray-400 bg-opacity-85 text-black flex items-center text-center border-none fixed left-1/2 transform -translate-x-1/2 z-[1000]">
+      <Navbar className="mx-auto mt-2 lg:mt-5 w-[95%] min-h-14 max-w-screen-xl px-3 py-3 shadow-[0px_10px_30px_rgba(0,0,0,0.5)] bg-gray-300 bg-opacity-85 text-black flex items-center text-center border-none fixed left-1/2 transform -translate-x-1/2 z-[1000]">
         <div className="flex justify-between w-full items-center">
           <IconButton
             variant="text"

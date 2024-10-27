@@ -32,14 +32,16 @@ export default function Product() {
               <h1 className="text-xl lg:text-3xl font-extrabold uppercase ">
                 {producto.nombreProducto}
               </h1>
-              <p className="md:text-md lg:text-xl">{producto.descripcion}</p>
+              <p className="md:text-md lg:text-xl max-w-[80%]">
+                {producto.descripcion}
+              </p>
             </div>
             <div className="flex justify-center items-end">
               <Typography
                 as="a"
                 href="https://api.whatsapp.com/send/?phone=5492284620662&text&type=phone_number&app_absent=0"
                 target="_blank"
-                className="bg-gradient-to-r rounded-full w-72 h-12 md:w-96 lg:h-16 lg:text-lg font-semibold from-gray-500 to-white text-black flex justify-center items-center  transform transition-transform duration-300 hover:scale-105"
+                className="bg-gradient-to-r rounded-full w-72 h-12 md:w-96 lg:h-16 lg:text-xl xl:text-2xl font-semibold border-2 border-white from-gray-500 to-gray-200 text-black flex justify-center items-center  transform transition-transform duration-300 hover:scale-105"
               >
                 Consultar disponibilidad
               </Typography>
