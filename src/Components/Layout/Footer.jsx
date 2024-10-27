@@ -36,7 +36,7 @@ export default function Footer() {
                   >
                     <img
                       className="h-7 w-7 rounded-full object-cover object-center mr-2 mb-1"
-                      src="./iconos/icono-facebook.png"
+                      src="./iconos/icono-facebook.png?v=1"
                       alt="Facebook icono"
                     />
                   </a>
@@ -60,7 +60,7 @@ export default function Footer() {
                   >
                     <img
                       className="h-7 w-7 rounded-full object-cover object-center mr-2 mb-1"
-                      src="./iconos/icono-instagram.png"
+                      src="./iconos/icono-instagram.png?v=1"
                       alt="Instagram icono"
                     />
                   </a>
@@ -82,7 +82,7 @@ export default function Footer() {
                 <div className="flex items-center">
                   <img
                     className="h-7 w-7 rounded-full object-cover object-center mr-2 mb-1"
-                    src="./iconos/icono-mail.png"
+                    src="./iconos/icono-mail.png?v=1"
                     alt="Facebook icono"
                   />
                   <Typography
@@ -102,7 +102,7 @@ export default function Footer() {
                   >
                     <img
                       className="h-7 w-7 rounded-full object-cover object-center mr-2 mb-1"
-                      src="./iconos/icono-wsp.png"
+                      src="./iconos/icono-wsp.png?v=1"
                       alt="Facebook icono"
                     />
                   </a>
@@ -119,7 +119,7 @@ export default function Footer() {
               </li>
             </div>
           </ul>
-          <img src="./img/IGO-logo.png" alt="logo-ct" className="w-10" />
+          <img src="./img/IGO-logo.png?v=1" alt="logo-ct" className="w-10" />
         </div>
       </footer>
     </>
