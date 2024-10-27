@@ -63,7 +63,7 @@ const NavbarWithMenu = () => {
 
           <Link to="/" className="flex items-center mx-auto md:mx-0">
             <img
-              className="w-8 bg-black rounded-lg shadow-sm shadow-blue-gray-900/50"
+              className="w-10 bg-black rounded-lg shadow-sm shadow-blue-gray-900/50"
               src="/img/IGO-logo.png"
               alt="logo de igo"
             />
