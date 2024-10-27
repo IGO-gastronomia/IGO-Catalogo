@@ -1,5 +1,4 @@
 import { Typography } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -79,24 +78,22 @@ export default function Footer() {
             </div>
 
             <div className="flex flex-col gap-x-2 gap-y-2">
-              <Link to="form-consulta">
-                <li>
-                  <div className="flex items-center">
-                    <img
-                      className="h-7 w-7 rounded-full object-cover object-center mr-2 mb-1"
-                      src="./iconos/icono-mail.png"
-                      alt="Facebook icono"
-                    />
-                    <Typography
-                      as="a"
-                      color="blue-gray"
-                      className="hidden xl:block font-normal transition-colors text-gris-claro hover:text-blue-500 focus:text-blue-500"
-                    >
-                      institutogastronomicoolavarria@gmail.com
-                    </Typography>
-                  </div>
-                </li>
-              </Link>
+              <li>
+                <div className="flex items-center">
+                  <img
+                    className="h-7 w-7 rounded-full object-cover object-center mr-2 mb-1"
+                    src="./iconos/icono-mail.png"
+                    alt="Facebook icono"
+                  />
+                  <Typography
+                    as=""
+                    color="blue-gray"
+                    className="hidden xl:block font-normal transition-colors text-gris-claro hover:text-blue-500 focus:text-blue-500"
+                  >
+                    institutogastronomicoolavarria@gmail.com
+                  </Typography>
+                </div>
+              </li>
               <li>
                 <div className="flex items-center">
                   <a

@@ -14,8 +14,11 @@ module.exports = withMT({
         "gris-oscuro": "#878787",
       },
       screens: {
-        sm: "320px",
-        xl: "1280px",
+        sm: "640px", // Teléfonos grandes
+        md: "768px", // Tablets
+        lg: "1024px", // Laptops
+        xl: "1280px", // Escritorios
+        "2xl": "1536px", // Escritorios extra grandes
       },
       boxShadow: {
         centrada: "0px 0px 15px rgba(0, 0, 0, 0.5)",

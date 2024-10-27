@@ -66,11 +66,20 @@ export default function Products() {
           </div>
 
           {/* Listado de productos filtrados */}
-          <section className="flex justify-center flex-wrap gap-4 md:gap-8 pt-4 p-2 lg:max-w-[90%]">
+          <section
+            className={`flex justify-center flex-wrap gap-4 md:gap-8 pt-4 p-2 lg:max-w-[90%]`}
+          >
             {visibleProducts && visibleProducts.length ? (
               visibleProducts.map((prod) => (
                 <Link to={`${prod.idProducto}`} key={prod.idProducto}>
-                  <article className="relative h-48 w-40 md:h-72 md:w-64 bg-gray-300 rounded-3xl flex justify-center items-center">
+                  <article
+                    style={{
+                      backgroundImage: `url(${prod.imgProducto})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                    className="relative h-48 w-40 md:h-72 md:w-64 bg-gray-300 rounded-3xl flex justify-center items-center transform transition-transform duration-300 ease-in-out  border-0 border-transparent hover:scale-105  hover:border-[1px] hover:border-gray-400 hover:shadow-2xl"
+                  >
                     <div className="absolute bottom-0 left-0 p-3 min-h-20 flex flex-col justify-center bg-black bg-opacity-55 text-black w-full rounded-b-3xl">
                       <h1 className="text-sm md:text-[16px] text-start text-wrap md:text-center mb-3 font-semibold first-letter:uppercase lowercase">
                         {prod.nombreProducto.split(" ").slice(0, 3).join(" ") +

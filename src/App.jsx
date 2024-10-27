@@ -8,7 +8,7 @@ import Product from "./Components/Product";
 
 export default function App() {
   return (
-    <>
+    <div className="bg-gradient-to-br from-gray-900 via-gray-700 to-gray-900">
       <Header />
       <Routes>
         <Route path="/" element={<Home />}></Route>
@@ -23,6 +23,6 @@ export default function App() {
         ></Route>
       </Routes>
       <Footer />
-    </>
+    </div>
   );
 }

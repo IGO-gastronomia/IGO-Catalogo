@@ -29,7 +29,7 @@ export function DefaultPagination({
         <IconButton
           key={activePage + "-mobile"}
           variant={activePage === 1 ? "filled" : "text"}
-          color="gray"
+          color="black"
           onClick={() => onPageChange(1)}
         >
           1
@@ -130,13 +130,13 @@ export function DefaultPagination({
 
   return (
     <div
-      className={`flex items-center justify-center gap-1 md:gap-4 my-10 ${
+      className={`flex items-center justify-center gap-1 md:gap-4 my-10 bg-gradient-to-r from-gray-500 via-white to-gray-500  rounded-full h-14 md:px-5 ${
         totalItems <= itemsPerPage ? "hidden" : "block"
       }`}
     >
       <Button
         variant="text"
-        className="flex items-center gap-2 px-2 md:px-3"
+        className="flex items-center gap-2 px-2 md:px-3 rounded-full"
         onClick={prev}
         disabled={activePage === 1}
       >
