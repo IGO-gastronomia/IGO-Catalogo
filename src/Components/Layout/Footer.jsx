@@ -1,73 +1,95 @@
 import { Typography } from "@material-tailwind/react";
+import { Helmet } from "react-helmet";
 
 export default function Footer() {
   return (
     <>
+      {/* SEO para el Footer */}
+      <Helmet>
+        <title>IGO - Catologo</title>
+        <meta
+          name="description"
+          content="Contacto y redes sociales del Instituto Gastronómico Olavarría. Encuéntranos en Vicente López 2471, Olavarría, Buenos Aires."
+        />
+      </Helmet>
+
       <footer className="mx-auto px-1 md:px-6 py-3 bg-black w-full ">
-        <div className="flex flex-row flex-wrap items-center  justify-evenly xl:justify-between gap-y-6 gap-x-4 md:gap-x-12 bg-black text-center">
+        <div className="flex flex-row flex-wrap items-center justify-evenly xl:justify-between gap-y-6 gap-x-4 md:gap-x-12 bg-black text-center">
+          {/* Información de la Sede */}
           <div className="flex flex-col h-100 border-r-2 pr-5 md:pr-20 ">
             <Typography
               color="blue-gray"
-              className=" text-gris-claro flex items-center font-semibold"
+              className="text-gris-claro flex items-center font-semibold"
             >
               Sede
             </Typography>
             <Typography
               color="blue-gray"
-              className=" text-gris-claro font-norma flex items-center"
+              className="text-gris-claro font-norma flex items-center"
             >
               Vicente López 2471
             </Typography>
             <Typography
               color="blue-gray"
-              className=" text-gris-claro font-norma flex items-center"
+              className="text-gris-claro font-norma flex items-center"
             >
               Olavarría, Buenos Aires
             </Typography>
           </div>
 
-          <ul className="flex items-start flex-row  gap-x-2 ">
+          {/* Enlaces a Redes Sociales y Contacto */}
+          <ul className="flex items-start flex-row gap-x-2">
             <div className="flex flex-col gap-x-2 gap-y-2">
+              {/* Facebook */}
               <li>
                 <div className="flex items-center">
                   <a
                     href="https://www.facebook.com/InstitutoGastronomicoOlavarria"
                     target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instituto Gastronómico Olavarría en Facebook"
                   >
                     <img
                       className="h-7 w-7 rounded-full object-cover object-center mr-2 mb-1"
                       src="./iconos/icono-facebook.png?v=1"
                       alt="Facebook icono"
+                      loading="lazy"
                     />
                   </a>
                   <Typography
                     as="a"
                     href="https://www.facebook.com/InstitutoGastronomicoOlavarria"
                     target="_blank"
+                    rel="noopener noreferrer"
                     color="blue-gray"
                     className="hidden xl:block font-normal transition-colors text-gris-claro hover:text-blue-500 focus:text-blue-500"
                   >
-                    instituto Gastronómico Olavarría
+                    Instituto Gastronómico Olavarría
                   </Typography>
                 </div>
               </li>
 
+              {/* Instagram */}
               <li>
                 <div className="flex items-center">
                   <a
                     href="https://www.instagram.com/igo.gastronomia/"
                     target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instituto Gastronómico Olavarría en Instagram"
                   >
                     <img
                       className="h-7 w-7 rounded-full object-cover object-center mr-2 mb-1"
                       src="./iconos/icono-instagram.png?v=1"
                       alt="Instagram icono"
+                      loading="lazy"
                     />
                   </a>
                   <Typography
                     as="a"
                     href="https://www.instagram.com/igo.gastronomia/"
                     target="_blank"
+                    rel="noopener noreferrer"
                     color="blue-gray"
                     className="hidden xl:block font-normal transition-colors text-gris-claro hover:text-blue-500 focus:text-blue-500"
                   >
@@ -78,15 +100,17 @@ export default function Footer() {
             </div>
 
             <div className="flex flex-col gap-x-2 gap-y-2">
+              {/* Email */}
               <li>
                 <div className="flex items-center">
                   <img
                     className="h-7 w-7 rounded-full object-cover object-center mr-2 mb-1"
                     src="./iconos/icono-mail.png?v=1"
-                    alt="Facebook icono"
+                    alt="Email icono"
+                    loading="lazy"
                   />
                   <Typography
-                    as=""
+                    as="p"
                     color="blue-gray"
                     className="hidden xl:block font-normal transition-colors text-gris-claro hover:text-blue-500 focus:text-blue-500"
                   >
@@ -94,22 +118,28 @@ export default function Footer() {
                   </Typography>
                 </div>
               </li>
+
+              {/* WhatsApp */}
               <li>
                 <div className="flex items-center">
                   <a
                     href="https://api.whatsapp.com/send/?phone=5492284620662&text&type=phone_number&app_absent=0"
                     target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Enviar mensaje por WhatsApp"
                   >
                     <img
                       className="h-7 w-7 rounded-full object-cover object-center mr-2 mb-1"
                       src="./iconos/icono-wsp.png?v=1"
-                      alt="Facebook icono"
+                      alt="WhatsApp icono"
+                      loading="lazy"
                     />
                   </a>
                   <Typography
                     as="a"
                     href="https://api.whatsapp.com/send/?phone=5492284620662&text&type=phone_number&app_absent=0"
                     target="_blank"
+                    rel="noopener noreferrer"
                     color="blue-gray"
                     className="hidden xl:block font-normal transition-colors text-gris-claro hover:text-blue-500 focus:text-blue-500"
                   >
@@ -119,7 +149,14 @@ export default function Footer() {
               </li>
             </div>
           </ul>
-          <img src="./img/IGO-logo.png?v=1" alt="logo-ct" className="w-10" />
+
+          {/* Logo */}
+          <img
+            src="./img/IGO-logo.png?v=1"
+            alt="Logo Instituto Gastronómico Olavarría"
+            className="w-10"
+            loading="lazy"
+          />
         </div>
       </footer>
     </>
