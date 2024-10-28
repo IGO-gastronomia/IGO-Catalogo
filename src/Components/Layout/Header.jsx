@@ -107,9 +107,13 @@ const NavbarWithMenu = () => {
 
       {/* Menú desplegable */}
       <div
-        className={`fixed top-0 left-0 w-full h-full bg-gray-800 text-white transform transition-transform duration-500 ease-in-out z-[99999] bg-opacity-95 ${
+        className={`fixed top-0 left-0 w-full md:w-[35%] h-full text-white transform transition-transform duration-500 ease-in-out z-[99999] shadow-lg backdrop-blur-md ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(17, 17, 17, 0.85), rgba(55, 55, 55, 0.85))",
+        }}
       >
         <div className="flex justify-end p-4">
           <IconButton
@@ -117,15 +121,13 @@ const NavbarWithMenu = () => {
             variant="text"
             size="md"
             onClick={toggleMenu}
+            className="text-white hover:bg-gray-700 hover:text-gray-300 transition-all duration-300 rounded-full"
           >
-            <i
-              className="fa fa-times text-white text-xl"
-              aria-hidden="true"
-            ></i>
+            <i className="fa fa-times text-2xl" aria-hidden="true"></i>
           </IconButton>
         </div>
 
-        <div className="flex flex-col items-center justify-start mt-10 h-full">
+        <div className="flex flex-col items-center justify-start mt-10 h-full space-y-4">
           {categs.map((cat) => {
             const slug = createSlug(cat.nombreCategoria);
             return (
@@ -133,7 +135,7 @@ const NavbarWithMenu = () => {
                 key={cat.idCategoria}
                 to={`/products/${slug}`}
                 onClick={toggleMenu}
-                className="leading-[2.5] flex flex-col justify-start"
+                className="text-lg font-semibold leading-8 text-white transition-all duration-300 ease-in-out hover:text-gray-300 hover:pl-2"
               >
                 {cat.nombreCategoria}
               </Link>
@@ -142,7 +144,7 @@ const NavbarWithMenu = () => {
           <Link
             to="/products"
             onClick={toggleMenu}
-            className="leading-[2.5] flex flex-col justify-start"
+            className="text-lg font-semibold leading-8 text-white transition-all duration-300 ease-in-out hover:text-gray-300 hover:pl-2"
           >
             Todos los productos
           </Link>

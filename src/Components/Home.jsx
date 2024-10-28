@@ -64,7 +64,7 @@ export default function Home() {
               isVideoVisible
                 ? "h-[368px] md:h-[468px] md:w-[70%] hover:cursor-pointer duration-200 hover:scale-[1.01] hover:border-[1px] hover:border-gray-500 shadow-2xl"
                 : "h-48 md:h-96 md:w-[75%]"
-            } mb-20 mt-10 md:mb-14`}
+            } mt-8 mb-12 md:mt-10 md:mb-14`}
             style={{
               backgroundImage: isVideoVisible
                 ? "none"
