@@ -6,9 +6,11 @@ import { Helmet } from "react-helmet";
 export default function Product() {
   const { idProducto } = useParams();
   const [producto, setProducto] = useState(null);
+  const [isLoading, setIsLoading] = useState(true); // Estado de carga
 
   useEffect(() => {
     const fetchProducto = async () => {
+      setIsLoading(true); // Inicia el spinner
       try {
         const response = await fetch(
           `https://app-16cf71d0-fd8d-4063-8de4-f49ee1f528d7.cleverapps.io/productos/${idProducto}`
@@ -21,6 +23,8 @@ export default function Product() {
       } catch (error) {
         console.error("Error al obtener el producto:", error);
         setProducto(null);
+      } finally {
+        setIsLoading(false); // Finaliza el spinner
       }
     };
 
@@ -29,7 +33,6 @@ export default function Product() {
 
   return (
     <>
-      {/* Meta Tags para SEO */}
       <Helmet>
         <title>
           {producto
@@ -47,7 +50,11 @@ export default function Product() {
       </Helmet>
 
       <div className="pt-24 md:pt-36 h-screen">
-        {producto ? (
+        {isLoading ? (
+          <div className="flex justify-center items-center h-full">
+            <div className="w-16 h-16 border-4 border-t-transparent border-gray-400 rounded-full animate-spin"></div>
+          </div>
+        ) : producto ? (
           <div className="flex flex-col md:flex-row items-center w-full h-full ">
             <div className="p-5 w-96 lg:w-[60%] h-1/2 md:h-full flex flex-col justify-center items-center">
               {!producto.url_imagen ? (
