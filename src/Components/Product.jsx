@@ -11,7 +11,7 @@ export default function Product() {
     const fetchProducto = async () => {
       try {
         const response = await fetch(
-          `http://app-16cf71d0-fd8d-4063-8de4-f49ee1f528d7.cleverapps.io/productos/${idProducto}`
+          `https://app-16cf71d0-fd8d-4063-8de4-f49ee1f528d7.cleverapps.io/productos/${idProducto}`
         );
         if (!response.ok) {
           throw new Error("Producto no encontrado");
