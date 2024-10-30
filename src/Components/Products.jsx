@@ -11,6 +11,7 @@ export default function Products() {
   const [productsByCateg, setProductsByCateg] = useState([]);
   const [visibleProducts, setVisibleProducts] = useState([]);
   const [activePage, setActivePage] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
   const productsPerPage = 20;
   const { searchQuery } = useSearch();
 
@@ -20,8 +21,10 @@ export default function Products() {
       .replace(/\s+/g, "-")
       .replace(/[^\w-]+/g, "");
   };
+
   useEffect(() => {
     const fetchProducts = async () => {
+      setIsLoading(true);
       try {
         const response = await fetch(
           "https://app-16cf71d0-fd8d-4063-8de4-f49ee1f528d7.cleverapps.io/productos"
@@ -32,35 +35,31 @@ export default function Products() {
           setProductsByCateg(data);
           setCategoria({ nombreCategoria: "Todos los productos" });
         } else {
-          // Busca la categoría correspondiente al slug
           const foundCategoria = categs.find((cat) => {
             return createSlug(cat.nombreCategoria) === slug;
           });
 
-          // Si se encuentra la categoría, filtra los productos
           if (foundCategoria) {
             setCategoria(foundCategoria);
-
-            // Filtrar productos por categoría encontrada
             const productsByCat = data.filter(
               (prod) => prod.id_categoria === foundCategoria.idCategoria
             );
-
             setProductsByCateg(productsByCat);
           } else {
             setCategoria({ nombreCategoria: "Categoría no encontrada" });
-            setProductsByCateg([]); // No hay productos para una categoría no encontrada
+            setProductsByCateg([]);
           }
         }
       } catch (error) {
         console.error("Error al obtener productos:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchProducts();
   }, [slug]);
 
-  // Filtrar productos en función de la búsqueda
   const filteredProducts = useMemo(() => {
     return productsByCateg.filter(
       (prod) =>
@@ -72,7 +71,6 @@ export default function Products() {
     );
   }, [productsByCateg, searchQuery]);
 
-  // Actualizar productos visibles para la paginación
   useEffect(() => {
     const startIndex = (activePage - 1) * productsPerPage;
     const endIndex = startIndex + productsPerPage;
@@ -83,7 +81,6 @@ export default function Products() {
 
   return (
     <>
-      {/* Meta Tags para SEO */}
       <Helmet>
         <title>
           {"IGO - " + categoria?.nombreCategoria || "IGO - Productos"}{" "}
@@ -97,7 +94,11 @@ export default function Products() {
       </Helmet>
 
       <section className="pt-24 md:pt-26 flex min-h-screen flex-col items-center justify-start lg:pt-28 text-center px-3">
-        {categoria ? (
+        {isLoading ? (
+          <div className="flex justify-center items-center h-64">
+            <div className="w-16 h-16 border-4 border-t-transparent border-gray-400 rounded-full animate-spin"></div>
+          </div>
+        ) : categoria ? (
           <>
             <div className="h-32 w-full md:w-[95%] bg-black rounded-3xl flex justify-center items-center">
               <h1 className="text-white text-2xl">
@@ -105,7 +106,6 @@ export default function Products() {
               </h1>
             </div>
 
-            {/* Descripción de la categoría */}
             {categoria.nombreCategoria !== "Categoría no encontrada" &&
               visibleProducts.length > 0 && (
                 <p className="text-gray-400 text-base mt-4">
@@ -114,13 +114,11 @@ export default function Products() {
                 </p>
               )}
 
-            {/* Listado de productos filtrados */}
             <section className="flex justify-center flex-wrap gap-3 md:gap-8 pt-4 lg:max-w-[90%]">
               {visibleProducts.length ? (
                 visibleProducts.map((prod) => (
                   <Link to={`${prod.id_producto}`} key={prod.id_producto}>
                     <article className="relative h-56 w-44 md:h-72 md:w-64 rounded-3xl flex justify-center items-center transform transition-transform duration-300 ease-in-out border-0 border-transparent hover:scale-105 hover:border-[1px] hover:border-white hover:shadow-2xl bg-gray-300">
-                      {/* Imagen con opacidad condicional */}
                       <div className="relative h-full w-full rounded-3xl overflow-hidden">
                         <img
                           src={
@@ -136,7 +134,6 @@ export default function Products() {
                         />
                       </div>
 
-                      {/* Información del producto */}
                       <div className="absolute bottom-0 left-0 p-2 min-h-20 flex flex-col justify-center bg-black bg-opacity-85 text-white w-full rounded-b-3xl">
                         <h1 className="text-sm md:text-[16px] text-start md:text-center mb-3 font-semibold first-letter:uppercase lowercase">
                           {prod.nombre}
@@ -154,7 +151,6 @@ export default function Products() {
               )}
             </section>
 
-            {/* Paginación */}
             {filteredProducts.length > productsPerPage && (
               <DefaultPagination
                 activePage={activePage}
