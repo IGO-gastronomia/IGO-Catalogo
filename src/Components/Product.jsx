@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import productos from "../assets/productos.json";
 import { Typography } from "@material-tailwind/react";
 import { Helmet } from "react-helmet";
 
@@ -9,13 +8,23 @@ export default function Product() {
   const [producto, setProducto] = useState(null);
 
   useEffect(() => {
-    // Encuentra el producto que coincide con el idProducto
-    const prod = productos.find((p) => p.idProducto.toString() === idProducto);
-    if (prod) {
-      setProducto(prod); // Guarda el producto encontrado en el estado
-    } else {
-      setProducto(null); // Si no se encuentra, establece null
-    }
+    const fetchProducto = async () => {
+      try {
+        const response = await fetch(
+          `http://app-16cf71d0-fd8d-4063-8de4-f49ee1f528d7.cleverapps.io/productos/${idProducto}`
+        );
+        if (!response.ok) {
+          throw new Error("Producto no encontrado");
+        }
+        const data = await response.json();
+        setProducto(data);
+      } catch (error) {
+        console.error("Error al obtener el producto:", error);
+        setProducto(null);
+      }
+    };
+
+    fetchProducto();
   }, [idProducto]);
 
   return (
@@ -24,15 +33,15 @@ export default function Product() {
       <Helmet>
         <title>
           {producto
-            ? `${producto.nombreProducto} - Mi Tienda`
-            : "Producto no encontrado - Mi Tienda"}
+            ? `${producto.nombre} - IGO`
+            : "Producto no encontrado - IGO"}
         </title>
         <meta
           name="description"
           content={
             producto
               ? `${producto.descripcion} - Disponible por solo $${producto.precio}. ¡Consulta disponibilidad ahora!`
-              : "Producto no encontrado en Mi Tienda"
+              : "Producto no encontrado en IGO"
           }
         />
       </Helmet>
@@ -41,7 +50,7 @@ export default function Product() {
         {producto ? (
           <div className="flex flex-col md:flex-row items-center w-full h-full ">
             <div className="p-5 w-96 lg:w-[60%] h-1/2 md:h-full flex flex-col justify-center items-center">
-              {!producto.imgProducto ? (
+              {!producto.url_imagen ? (
                 <img
                   src="/img/IGO-logo.png"
                   className="object-cover w-48 md:w-auto bg-black border-black opacity-60"
@@ -50,9 +59,9 @@ export default function Product() {
                 />
               ) : (
                 <img
-                  src={producto.imgProducto}
+                  src={producto.url_imagen}
                   className="object-cover w-72 h-72 md:w-[450px] md:h-[450px] bg-gray-400"
-                  alt={`Imagen del producto ${producto.nombreProducto}`}
+                  alt={`Imagen del producto ${producto.nombre}`}
                   loading="lazy"
                 />
               )}
@@ -60,7 +69,7 @@ export default function Product() {
             <div className="w-full md:w-1/2 lg:w-[40%] h-[50%] md:h-full bg-gradient-to-br from-black via-gray-800 to-black rounded-t-[40px] md:rounded-t-[80px] py-10 px-8 md:py-24 md:px-14 flex flex-col justify-between ">
               <div className="flex flex-col items-start gap-5 w-full h-full text-white">
                 <h1 className="text-xl lg:text-3xl font-extrabold uppercase ">
-                  {producto.nombreProducto}
+                  {producto.nombre}
                 </h1>
                 <p className="md:text-md lg:text-xl max-w-[80%]">
                   {producto.descripcion}
@@ -72,7 +81,7 @@ export default function Product() {
               <div className="flex justify-center items-end">
                 <Typography
                   as="a"
-                  href="https://api.whatsapp.com/send/?phone=5492284620662&text=Hola, estoy interesado en el producto ${producto.nombreProducto}. ¿Está disponible?"
+                  href={`https://api.whatsapp.com/send/?phone=5492284620662&text=Hola, estoy interesado en el producto ${producto.nombre}. ¿Está disponible?`}
                   target="_blank"
                   className="bg-gradient-to-r rounded-full w-72 h-12 md:w-96 lg:h-16 lg:text-xl xl:text-2xl font-semibold border-2 border-white from-gray-500 to-gray-200 text-black flex justify-center items-center transform transition-transform duration-300 hover:scale-105"
                 >
@@ -83,7 +92,7 @@ export default function Product() {
           </div>
         ) : (
           <div className="flex justify-center items-center h-full">
-            <p className="text-lg font-semibold text-gray-700">
+            <p className="text-lg font-semibold text-gray-50">
               Producto no encontrado. Verifica el enlace o explora nuestra
               tienda.
             </p>

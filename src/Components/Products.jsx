@@ -1,8 +1,6 @@
-// Products.js
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect, useMemo } from "react";
 import categs from "../assets/categs.json";
-import productos from "../assets/productos.json";
 import { DefaultPagination } from "./DefaultPagination.jsx";
 import { useSearch } from "../SearchContext";
 import { Helmet } from "react-helmet";
@@ -22,32 +20,55 @@ export default function Products() {
       .replace(/\s+/g, "-")
       .replace(/[^\w-]+/g, "");
   };
-
   useEffect(() => {
-    if (!slug) {
-      setProductsByCateg(productos);
-      setCategoria({ nombreCategoria: "Todos los productos" });
-    } else {
-      const foundCategoria = categs.find(
-        (cat) => createSlug(cat.nombreCategoria) === slug
-      );
-      setCategoria(
-        foundCategoria || { nombreCategoria: "Categoría no encontrada" }
-      );
-      const productsByCat = productos.filter(
-        (prod) => prod.idCategoria === foundCategoria?.idCategoria
-      );
-      setProductsByCateg(productsByCat);
-    }
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch(
+          "http://app-16cf71d0-fd8d-4063-8de4-f49ee1f528d7.cleverapps.io/productos"
+        );
+        const data = await response.json();
+
+        if (!slug) {
+          setProductsByCateg(data);
+          setCategoria({ nombreCategoria: "Todos los productos" });
+        } else {
+          // Busca la categoría correspondiente al slug
+          const foundCategoria = categs.find((cat) => {
+            return createSlug(cat.nombreCategoria) === slug;
+          });
+
+          // Si se encuentra la categoría, filtra los productos
+          if (foundCategoria) {
+            setCategoria(foundCategoria);
+
+            // Filtrar productos por categoría encontrada
+            const productsByCat = data.filter(
+              (prod) => prod.id_categoria === foundCategoria.idCategoria
+            );
+
+            setProductsByCateg(productsByCat);
+          } else {
+            setCategoria({ nombreCategoria: "Categoría no encontrada" });
+            setProductsByCateg([]); // No hay productos para una categoría no encontrada
+          }
+        }
+      } catch (error) {
+        console.error("Error al obtener productos:", error);
+      }
+    };
+
+    fetchProducts();
   }, [slug]);
 
   // Filtrar productos en función de la búsqueda
   const filteredProducts = useMemo(() => {
     return productsByCateg.filter(
       (prod) =>
-        prod.nombreProducto.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        prod.precio.toString().includes(searchQuery) ||
-        prod.descripcion.toLowerCase().includes(searchQuery.toLowerCase())
+        (prod.nombre &&
+          prod.nombre.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (prod.precio && prod.precio.toString().includes(searchQuery)) ||
+        (prod.descripcion &&
+          prod.descripcion.toLowerCase().includes(searchQuery.toLowerCase()))
     );
   }, [productsByCateg, searchQuery]);
 
@@ -86,7 +107,7 @@ export default function Products() {
 
             {/* Descripción de la categoría */}
             {categoria.nombreCategoria !== "Categoría no encontrada" &&
-              visibleProducts > 0 && (
+              visibleProducts.length > 0 && (
                 <p className="text-gray-400 text-base mt-4">
                   Explora nuestros productos de{" "}
                   {categoria.nombreCategoria.toLowerCase()}.
@@ -95,21 +116,21 @@ export default function Products() {
 
             {/* Listado de productos filtrados */}
             <section className="flex justify-center flex-wrap gap-3 md:gap-8 pt-4 lg:max-w-[90%]">
-              {visibleProducts && visibleProducts.length ? (
+              {visibleProducts.length ? (
                 visibleProducts.map((prod) => (
-                  <Link to={`${prod.idProducto}`} key={prod.idProducto}>
+                  <Link to={`${prod.id_producto}`} key={prod.id_producto}>
                     <article className="relative h-56 w-44 md:h-72 md:w-64 rounded-3xl flex justify-center items-center transform transition-transform duration-300 ease-in-out border-0 border-transparent hover:scale-105 hover:border-[1px] hover:border-white hover:shadow-2xl bg-gray-300">
                       {/* Imagen con opacidad condicional */}
                       <div className="relative h-full w-full rounded-3xl overflow-hidden">
                         <img
                           src={
-                            prod.imgProducto
-                              ? prod.imgProducto
+                            prod.url_imagen
+                              ? prod.url_imagen
                               : "/img/IGO-logo.png"
                           }
-                          alt={prod.nombreProducto}
+                          alt={"imagen del producto: " + prod.nombre}
                           className={`h-full w-full object-cover ${
-                            !prod.imgProducto ? "opacity-80" : ""
+                            !prod.url_imagen ? "opacity-80" : ""
                           }`}
                           loading="lazy"
                         />
@@ -118,7 +139,7 @@ export default function Products() {
                       {/* Información del producto */}
                       <div className="absolute bottom-0 left-0 p-2 min-h-20 flex flex-col justify-center bg-black bg-opacity-85 text-white w-full rounded-b-3xl">
                         <h1 className="text-sm md:text-[16px] text-start md:text-center mb-3 font-semibold first-letter:uppercase lowercase">
-                          {prod.nombreProducto}
+                          {prod.nombre}
                         </h1>
                       </div>
                     </article>

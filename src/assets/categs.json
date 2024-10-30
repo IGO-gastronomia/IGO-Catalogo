@@ -1,27 +1,27 @@
 [
   {
     "idCategoria": 1,
-    "nombreCategoria": "Cocina",
+    "nombreCategoria": "cocina",
     "img": "https://drive.google.com/thumbnail?id=1w27OcJF8K55cFB-h5q1-ZbCtAag-cOKm&sz=w1000"
   },
   {
     "idCategoria": 2,
-    "nombreCategoria": "Pasteleria",
+    "nombreCategoria": "pasteleria",
     "img": "https://drive.google.com/thumbnail?id=10jpkiVA7LHjof9ucE7KA5IOomnaokEGu&sz=w1000"
   },
   {
     "idCategoria": 3,
-    "nombreCategoria": "Decoracion",
+    "nombreCategoria": "decoracion",
     "img": "https://drive.google.com/thumbnail?id=1G_vTnKsfazPvxd4Q1EC4-zn6ArOJRX2P&sz=w1000"
   },
   {
     "idCategoria": 4,
-    "nombreCategoria": "Indumentaria",
+    "nombreCategoria": "indumentaria",
     "img": "https://drive.google.com/thumbnail?id=18JSiNk80JAecpzMsIbSI4wEenocpIuwB&sz=w1000https://drive.google.com/thumbnail?id=18JSiNk80JAecpzMsIbSI4wEenocpIuwB&sz=w1000"
   },
   {
     "idCategoria": 5,
-    "nombreCategoria": "Electrodomesticos",
+    "nombreCategoria": "electrodomesticos",
     "img": "https://drive.google.com/thumbnail?id=12s4n5Ja029TndsPJjMWunCJx6327sJK5&sz=w1000"
   }
 ]
