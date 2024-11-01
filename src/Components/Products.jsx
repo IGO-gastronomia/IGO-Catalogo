@@ -33,7 +33,10 @@ export default function Products() {
 
         if (!slug) {
           setProductsByCateg(data);
-          setCategoria({ nombreCategoria: "Todos los productos" });
+          setCategoria({
+            nombreCategoria: "Todos los productos",
+            img: "https://res.cloudinary.com/dwkyq6kut/image/upload/v1730483827/fotos%20igo%20catalogo/tuzebizepjsybu6qil2k.jpg",
+          });
         } else {
           const foundCategoria = categs.find((cat) => {
             return createSlug(cat.nombreCategoria) === slug;
