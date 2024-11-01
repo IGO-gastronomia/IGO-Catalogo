@@ -2,26 +2,26 @@
   {
     "idCategoria": 1,
     "nombreCategoria": "cocina",
-    "img": "https://drive.google.com/thumbnail?id=1w27OcJF8K55cFB-h5q1-ZbCtAag-cOKm&sz=w1000"
+    "img": "https://res.cloudinary.com/dwkyq6kut/image/upload/v1730483828/fotos%20igo%20catalogo/y4zs8vyr4ro0pmxyxjfp.jpg"
   },
   {
     "idCategoria": 2,
     "nombreCategoria": "pasteleria",
-    "img": "https://drive.google.com/thumbnail?id=10jpkiVA7LHjof9ucE7KA5IOomnaokEGu&sz=w1000"
+    "img": "https://res.cloudinary.com/dwkyq6kut/image/upload/v1730483828/fotos%20igo%20catalogo/bwsppv8nxiku20keqaof.jpg"
   },
   {
     "idCategoria": 3,
     "nombreCategoria": "decoracion",
-    "img": "https://drive.google.com/thumbnail?id=1G_vTnKsfazPvxd4Q1EC4-zn6ArOJRX2P&sz=w1000"
+    "img": "https://res.cloudinary.com/dwkyq6kut/image/upload/v1730483827/fotos%20igo%20catalogo/tuzebizepjsybu6qil2k.jpg"
   },
   {
     "idCategoria": 4,
     "nombreCategoria": "indumentaria",
-    "img": "https://drive.google.com/thumbnail?id=18JSiNk80JAecpzMsIbSI4wEenocpIuwB&sz=w1000https://drive.google.com/thumbnail?id=18JSiNk80JAecpzMsIbSI4wEenocpIuwB&sz=w1000"
+    "img": "https://res.cloudinary.com/dwkyq6kut/image/upload/v1730483828/fotos%20igo%20catalogo/g7cngjqfiuvpeotnssfw.jpg"
   },
   {
     "idCategoria": 5,
     "nombreCategoria": "electrodomesticos",
-    "img": "https://drive.google.com/thumbnail?id=12s4n5Ja029TndsPJjMWunCJx6327sJK5&sz=w1000"
+    "img": "https://res.cloudinary.com/dwkyq6kut/image/upload/v1730483828/fotos%20igo%20catalogo/yc6j7adfohi7744u4rxa.jpg"
   }
 ]

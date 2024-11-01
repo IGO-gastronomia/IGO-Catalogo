@@ -68,7 +68,7 @@ export default function Home() {
             style={{
               backgroundImage: isVideoVisible
                 ? "none"
-                : "url('https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80') ",
+                : "url('https://res.cloudinary.com/dwkyq6kut/image/upload/v1730483828/fotos%20igo%20catalogo/jjb6jqzt9qh0wnkxulf3.jpg') ",
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
@@ -121,8 +121,8 @@ export default function Home() {
                 className="flex flex-col justify-start relative bg-white w-full md:flex-grow md:basis-[300px] h-[250px] rounded-lg overflow-hidden shadow-lg bg-cover bg-center transform transition-transform duration-300 ease-in-out border-0 border-transparent hover:scale-105 hover:border-[1px] hover:border-white hover:shadow-gray-800"
                 style={{ backgroundImage: `url(${category.img})` }}
               >
-                <div className="absolute bottom-0 left-0 p-4 bg-black bg-opacity-55 text-white w-full rounded-b-lg">
-                  <h3 className="text-lg lg:text-xl font-semibold">
+                <div className="absolute bottom-0 left-0 p-4 bg-black bg-opacity-75 text-white w-full rounded-b-lg">
+                  <h3 className="text-lg lg:text-xl font-semibold first-letter:uppercase">
                     {category.nombreCategoria}
                   </h3>
                 </div>

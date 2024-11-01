@@ -4,15 +4,13 @@ import { Helmet } from "react-helmet";
 
 export function CarouselCustomNavigation() {
   const imagesDesktop = [
-    "https://drive.google.com/thumbnail?id=1w27OcJF8K55cFB-h5q1-ZbCtAag-cOKm&sz=w1000",
-    "https://drive.google.com/thumbnail?id=10jpkiVA7LHjof9ucE7KA5IOomnaokEGu&sz=w1000",
-    "https://drive.google.com/thumbnail?id=1G_vTnKsfazPvxd4Q1EC4-zn6ArOJRX2P&sz=w1000",
+    "https://res.cloudinary.com/dwkyq6kut/image/upload/v1730483828/fotos%20igo%20catalogo/zgdxl3zqy6cua8g48b0o.jpg",
+    "https://res.cloudinary.com/dwkyq6kut/image/upload/v1730483828/fotos%20igo%20catalogo/xqbkdnlvks9o0vwjr1fo.png",
   ];
 
   const imagesMobile = [
-    "https://drive.google.com/thumbnail?id=18JSiNk80JAecpzMsIbSI4wEenocpIuwB&sz=w1000",
-    "https://drive.google.com/thumbnail?id=12s4n5Ja029TndsPJjMWunCJx6327sJK5&sz=w1000",
-    "https://drive.google.com/thumbnail?id=1eOExopclUcgzuaRBXK9OgrwDCHezSA4c&sz=w1000",
+    "https://res.cloudinary.com/dwkyq6kut/image/upload/v1730483827/fotos%20igo%20catalogo/midzfmajpzcxf3zflnlf.jpg",
+    "https://res.cloudinary.com/dwkyq6kut/image/upload/v1730483828/fotos%20igo%20catalogo/e1qtoz5yvubfgtwthqza.jpg",
   ];
 
   const [activeIndex, setActiveIndex] = useState(1);

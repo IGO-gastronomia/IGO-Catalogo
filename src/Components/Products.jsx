@@ -27,7 +27,7 @@ export default function Products() {
       setIsLoading(true);
       try {
         const response = await fetch(
-          "https://app-16cf71d0-fd8d-4063-8de4-f49ee1f528d7.cleverapps.io/productos"
+          "https://igo-catalogo-back.onrender.com/productos/"
         );
         const data = await response.json();
 
@@ -100,8 +100,15 @@ export default function Products() {
           </div>
         ) : categoria ? (
           <>
-            <div className="h-32 w-full md:w-[95%] bg-black rounded-3xl flex justify-center items-center">
-              <h1 className="text-white text-2xl">
+            <div
+              className="h-44 w-full md:h-60 md:w-[75%] bg-cover bg-center rounded-3xl flex justify-center items-center relative"
+              style={{ backgroundImage: `url(${categoria.img})` }}
+            >
+              {/* Overlay semitransparente */}
+              <div className="absolute inset-0 bg-black/35 rounded-3xl"></div>
+
+              {/* Texto */}
+              <h1 className="text-white text-3xl font-bold uppercase relative z-10">
                 {categoria.nombreCategoria.split(" ").slice(0, 1).join(" ")}
               </h1>
             </div>
@@ -118,8 +125,9 @@ export default function Products() {
               {visibleProducts.length ? (
                 visibleProducts.map((prod) => (
                   <Link to={`${prod.id_producto}`} key={prod.id_producto}>
-                    <article className="relative h-56 w-44 md:h-72 md:w-64 rounded-3xl flex justify-center items-center transform transition-transform duration-300 ease-in-out border-0 border-transparent hover:scale-105 hover:border-[1px] hover:border-white hover:shadow-2xl bg-gray-300">
-                      <div className="relative h-full w-full rounded-3xl overflow-hidden">
+                    <article className="h-72 w-44 md:h-80 md:w-64 rounded-3xl flex flex-col transform transition-transform duration-300 ease-in-out border-0 border-transparent hover:scale-105 hover:border-[1px] hover:border-white hover:shadow-2xl bg-gray-300">
+                      {/* Imagen del producto */}
+                      <div className="h-3/4 w-full rounded-t-3xl overflow-hidden">
                         <img
                           src={
                             prod.url_imagen
@@ -127,15 +135,16 @@ export default function Products() {
                               : "/img/IGO-logo.png"
                           }
                           alt={"imagen del producto: " + prod.nombre}
-                          className={`h-full w-full object-cover ${
+                          className={`h-full w-full object-contain py-3 ${
                             !prod.url_imagen ? "opacity-80" : ""
                           }`}
                           loading="lazy"
                         />
                       </div>
 
-                      <div className="absolute bottom-0 left-0 p-2 min-h-20 flex flex-col justify-center bg-black bg-opacity-85 text-white w-full rounded-b-3xl">
-                        <h1 className="text-sm md:text-[16px] text-start md:text-center mb-3 font-semibold first-letter:uppercase lowercase">
+                      {/* Nombre del producto */}
+                      <div className="h-1/4 p-2 flex items-center bg-black bg-opacity-85 text-white w-full rounded-b-3xl">
+                        <h1 className="text-sm md:text-[16px] text-center font-semibold first-letter:uppercase lowercase w-full">
                           {prod.nombre}
                         </h1>
                       </div>
@@ -145,8 +154,7 @@ export default function Products() {
               ) : (
                 <p role="alert" className="text-gray-400">
                   No se encontraron productos para la búsqueda{" "}
-                  {`${searchQuery}`}
-                  en {categoria.nombreCategoria}.
+                  {`${searchQuery}`} en {categoria.nombreCategoria}.
                 </p>
               )}
             </section>

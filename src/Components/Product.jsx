@@ -13,7 +13,7 @@ export default function Product() {
       setIsLoading(true); // Inicia el spinner
       try {
         const response = await fetch(
-          `https://app-16cf71d0-fd8d-4063-8de4-f49ee1f528d7.cleverapps.io/productos/${idProducto}`
+          `https://igo-catalogo-back.onrender.com/productos/${idProducto}`
         );
         if (!response.ok) {
           throw new Error("Producto no encontrado");
@@ -67,7 +67,7 @@ export default function Product() {
               ) : (
                 <img
                   src={producto.url_imagen}
-                  className="object-cover w-72 h-72 md:w-[450px] md:h-[450px] bg-gray-400"
+                  className="object-cover w-72 h-72 md:w-[450px] md:h-[450px] bg-gray-400 rounded-xl"
                   alt={`Imagen del producto ${producto.nombre}`}
                   loading="lazy"
                 />
