@@ -26,33 +26,32 @@ export default function Products() {
     const fetchProducts = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(
-          "https://igo-catalogo-back.onrender.com/productos/"
-        );
-        const data = await response.json();
+        let apiUrl = "https://igo-catalogo-back.onrender.com/productos/";
 
-        if (!slug) {
-          setProductsByCateg(data);
+        if (slug) {
+          const foundCategoria = categs.find(
+            (cat) => createSlug(cat.nombreCategoria) === slug
+          );
+
+          if (foundCategoria) {
+            setCategoria(foundCategoria);
+            apiUrl = `https://igo-catalogo-back.onrender.com/productos/categoria/${foundCategoria.idCategoria}`;
+          } else {
+            setCategoria({ nombreCategoria: "Categoría no encontrada" });
+            setProductsByCateg([]);
+            setIsLoading(false);
+            return; // Sale si no se encuentra la categoría
+          }
+        } else {
           setCategoria({
             nombreCategoria: "Todos los productos",
             img: "https://res.cloudinary.com/dwkyq6kut/image/upload/v1730483827/fotos%20igo%20catalogo/tuzebizepjsybu6qil2k.jpg",
           });
-        } else {
-          const foundCategoria = categs.find((cat) => {
-            return createSlug(cat.nombreCategoria) === slug;
-          });
-
-          if (foundCategoria) {
-            setCategoria(foundCategoria);
-            const productsByCat = data.filter(
-              (prod) => prod.id_categoria === foundCategoria.idCategoria
-            );
-            setProductsByCateg(productsByCat);
-          } else {
-            setCategoria({ nombreCategoria: "Categoría no encontrada" });
-            setProductsByCateg([]);
-          }
         }
+
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        setProductsByCateg(data);
       } catch (error) {
         console.error("Error al obtener productos:", error);
       } finally {
@@ -80,13 +79,17 @@ export default function Products() {
     setVisibleProducts(filteredProducts.slice(startIndex, endIndex));
   }, [activePage, filteredProducts]);
 
+  useEffect(() => {
+    console.log(productsByCateg);
+  }, [productsByCateg]);
+
   const handlePageChange = (page) => setActivePage(page);
 
   return (
     <>
       <Helmet>
         <title>
-          {"IGO - " + categoria?.nombreCategoria || "IGO - Productos"}{" "}
+          {"IGO - " + categoria?.nombreCategoria || "IGO - Productos"}
         </title>
         <meta
           name="description"
