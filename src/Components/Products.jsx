@@ -79,10 +79,6 @@ export default function Products() {
     setVisibleProducts(filteredProducts.slice(startIndex, endIndex));
   }, [activePage, filteredProducts]);
 
-  useEffect(() => {
-    console.log(productsByCateg);
-  }, [productsByCateg]);
-
   const handlePageChange = (page) => setActivePage(page);
 
   return (
