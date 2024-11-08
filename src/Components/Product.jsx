@@ -55,7 +55,7 @@ export default function Product() {
             <div className="w-16 h-16 border-4 border-t-transparent border-gray-400 rounded-full animate-spin"></div>
           </div>
         ) : producto ? (
-          <div className="flex flex-col md:flex-row items-center w-full h-full ">
+          <div className="flex flex-col md:flex-row items-center w-full h-full  ">
             <div className="p-5 w-96 lg:w-[60%] h-1/2 md:h-full flex flex-col justify-center items-center">
               {!producto.url_imagen ? (
                 <img
@@ -67,7 +67,7 @@ export default function Product() {
               ) : (
                 <img
                   src={producto.url_imagen}
-                  className="object-cover w-72 h-72 md:w-[450px] md:h-[450px] bg-gray-400 rounded-xl"
+                  className="object-contain w-72 h-72 md:w-[450px] md:h-[450px] bg-gray-400 rounded-xl "
                   alt={`Imagen del producto ${producto.nombre}`}
                   loading="lazy"
                 />
