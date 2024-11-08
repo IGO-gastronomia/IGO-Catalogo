@@ -35,9 +35,7 @@ export default function Product() {
     <>
       <Helmet>
         <title>
-          {producto
-            ? `${producto.nombre} - IGO`
-            : "Producto no encontrado - IGO"}
+          {producto ? `IGO - ${producto.nombre} ` : "IGO - showroom"}
         </title>
         <meta
           name="description"
