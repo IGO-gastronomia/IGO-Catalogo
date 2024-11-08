@@ -140,3 +140,14 @@ export default function Home() {
     </>
   );
 }
+/* ,
+  {
+    "idCategoria": 4,
+    "nombreCategoria": "indumentaria",
+    "img": "https://res.cloudinary.com/dwkyq6kut/image/upload/v1730483828/fotos%20igo%20catalogo/g7cngjqfiuvpeotnssfw.jpg"
+  },
+  {
+    "idCategoria": 5,
+    "nombreCategoria": "electrodomesticos",
+    "img": "https://res.cloudinary.com/dwkyq6kut/image/upload/v1730483828/fotos%20igo%20catalogo/yc6j7adfohi7744u4rxa.jpg"
+  } */
