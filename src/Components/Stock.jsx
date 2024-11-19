@@ -11,7 +11,7 @@ import { PencilIcon, PlusIcon } from "@heroicons/react/24/solid";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function Stock() {
+export default function Stock({ onLogout }) {
   const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -189,32 +189,43 @@ export default function Stock() {
   };
 
   return (
-    <div className="flex flex-col w-[70%] pb-10">
+    <div className="flex flex-col mx-auto w-[70%] pb-10">
       <ToastContainer />
+
       {isLoading ? (
         <div className="flex justify-center items-center h-64">
           <p>Cargando productos...</p>
         </div>
       ) : (
         <>
-          <div className="flex justify-between p-4">
-            <Button
-              color="green"
-              onClick={handleAddClick}
-              className="flex items-center gap-2"
-            >
-              <PlusIcon className="h-5 w-5" />
-              Agregar Producto
-            </Button>
-            <input
-              type="text"
-              placeholder="Buscar..."
-              value={searchTerm}
-              onChange={handleSearch}
-              className="border border-gray-300 rounded-lg p-2"
-            />
+          <div className="flex flex-col w-full">
+            <div className="fixed top-10 right-4 z-[999999]">
+              <Button
+                color="red"
+                onClick={onLogout}
+                className="bg-transparent shadow-none hover:text-red-700 hover:scale-105 hover:shadow-none text-red-400 font-medium py-2 px-4 "
+              >
+                logout
+              </Button>
+            </div>
+            <div className="flex justify-between p-4">
+              <Button
+                color="green"
+                onClick={handleAddClick}
+                className="flex items-center gap-2"
+              >
+                <PlusIcon className="h-5 w-5" />
+                Agregar Producto
+              </Button>
+              <input
+                type="text"
+                placeholder="Buscar..."
+                value={searchTerm}
+                onChange={handleSearch}
+                className="border border-gray-300 rounded-lg p-2"
+              />
+            </div>
           </div>
-
           <Card className="overflow-scroll min-h-36 max-h-[700px] rounded-2xl">
             <table className="w-full table-auto text-left">
               <thead>

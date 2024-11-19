@@ -1,10 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Stock from "./Stock";
+import { Button } from "@material-tailwind/react";
 
 export default function Admin() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    // Verifica si el usuario ya está autenticado en el localStorage
+    const storedAuth = localStorage.getItem("isAuthenticated");
+    if (storedAuth === "true") {
+      setIsAuthenticated(true);
+    }
+  }, []);
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,20 +25,29 @@ export default function Admin() {
 
     // Datos de ejemplo
     const correctUsername = import.meta.env.VITE_ADMIN_USERNAME;
-    const correctPassword = import.meta.env.VITE_ADMIN_USERNAME;
+    const correctPassword = import.meta.env.VITE_ADMIN_PASSWORD;
 
     if (username === correctUsername && password === correctPassword) {
       setIsAuthenticated(true);
       setError("");
+      // Guarda el estado de autenticación en localStorage
+      localStorage.setItem("isAuthenticated", "true");
     } else {
       setError("Usuario o contraseña incorrectos");
     }
   };
 
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    localStorage.removeItem("isAuthenticated");
+  };
+
   return (
     <div className="flex justify-center w-full min-h-screen bg-gray-100 pt-40">
       {isAuthenticated ? (
-        <Stock></Stock>
+        <div className="w-full">
+          <Stock onLogout={handleLogout} />
+        </div>
       ) : (
         <div className="bg-white max-h-72 rounded shadow-lg p-6">
           <h2 className="text-xl font-semibold text-center mb-6">Login</h2>
