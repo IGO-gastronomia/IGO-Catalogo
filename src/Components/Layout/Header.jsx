@@ -142,7 +142,7 @@ const NavbarWithMenu = () => {
             );
           })}
           <Link
-            to="/products"
+            to="/products/todos"
             onClick={toggleMenu}
             className="text-lg font-semibold leading-8 text-white transition-all duration-300 ease-in-out hover:text-gray-300 hover:pl-2"
           >

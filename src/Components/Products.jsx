@@ -26,7 +26,7 @@ export default function Products() {
     const fetchProducts = async () => {
       setIsLoading(true);
       try {
-        let apiUrl = "https://igo-catalogo-back.onrender.com/productos/";
+        let apiUrl = "https://igo-catalogo-back.onrender.com/productos";
 
         if (slug) {
           const foundCategoria = categs.find(
