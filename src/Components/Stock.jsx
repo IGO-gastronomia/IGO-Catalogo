@@ -48,8 +48,12 @@ export default function Stock({ onLogout }) {
       try {
         const response = await fetch(API_URL);
         const data = await response.json();
-        setProducts(data);
-        setFilteredProducts(data);
+        const formattedData = data.map((product) => ({
+          ...product,
+          precio: parseInt(product.precio, 10),
+        }));
+        setProducts(formattedData);
+        setFilteredProducts(formattedData);
       } catch (error) {
         console.error("Error al obtener productos:", error);
       } finally {
@@ -89,7 +93,7 @@ export default function Stock({ onLogout }) {
     if (!descripcion.trim())
       newErrors.descripcion = "La descripción es obligatoria";
     if (!categoria.trim()) newErrors.categoria = "La categoría es obligatoria";
-    if (!precio || parseFloat(precio) < 0)
+    if (!precio || parseInt(precio) < 0)
       newErrors.precio = "El precio debe ser mayor a 0";
     if (!stock || parseInt(stock, 10) < 0)
       newErrors.stock = "El stock debe ser 0 o mayor";
@@ -122,7 +126,7 @@ export default function Stock({ onLogout }) {
       nombre,
       descripcion,
       id_categoria: parseInt(categoria, 10) || null,
-      precio: parseFloat(precio) || 0,
+      precio: parseInt(precio) || 0,
       stock: parseInt(stock, 10) || 0,
       url_imagen: urlImagen || null,
     };
@@ -266,7 +270,15 @@ export default function Stock({ onLogout }) {
                           category.idCategoria === product.id_categoria
                       )?.nombreCategoria || "N/A"}
                     </td>
-                    <td className="p-4">${product.precio || "N/A"}</td>
+                    <td className="p-4">
+                      $
+                      {product.precio
+                        ? product.precio.toLocaleString("es-ES", {
+                            minimumFractionDigits: 0,
+                            maximumFractionDigits: 0,
+                          })
+                        : "N/A"}
+                    </td>
                     <td className="p-4">{product.stock || "N/A"}</td>
                     <td className="p-4">
                       {product.url_imagen ? (
